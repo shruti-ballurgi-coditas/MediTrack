@@ -1,0 +1,26 @@
+<div class="dashboard">
+    <div class="file-upload-container">
+        <form class="form-container" [formGroup]="fileUploadForm" (ngSubmit)="uploadImg()" enctype="multipart/form-data">
+            <h3>Upload Your Medication Schedule</h3>
+            <label for="file-input" class="custom-file-input">{{ fileName || 'Upload File' }}</label>
+            <input type="file" placeholder="Upload Image.." class="file-input" formControlName="imgFile" id="file-input" (change)="onFileSelected($event)"/>
+            <button type="submit" class="upload-button">Upload</button>
+        </form>
+    </div>
+    <div class="display-medication-container">
+        <div *ngIf="!cardData;else other" class="noData-container">
+            <h3>Upload prescription to see the Schedules</h3>
+        </div>
+        <ng-template #other>
+            <div class="header">
+                <h3>Medication Schedules</h3>
+            </div>
+            <div class="cards-container">
+                <ng-container *ngFor="let card of cardData.medication_schedules">
+                    <app-medication-card [data]="card"></app-medication-card>
+                </ng-container>
+    
+            </div>
+        </ng-template>
+    </div>
+</div>
