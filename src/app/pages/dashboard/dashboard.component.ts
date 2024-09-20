@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { DialogService } from 'src/app/sevices/dialog.service';
 
 // const data = {
 //   prescription: {
@@ -157,7 +158,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,public dialogService: DialogService) {}
   cardData: any;
   selectedImg!: File;
   fileUploadForm = new FormGroup({
@@ -190,5 +191,9 @@ export class DashboardComponent {
           this.fileName = ""
         },
       });
+  }
+
+  openDialog() {
+    this.dialogService.openDialog();
   }
 }

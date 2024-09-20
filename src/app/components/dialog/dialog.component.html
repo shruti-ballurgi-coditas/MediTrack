@@ -1,0 +1,7 @@
+<div class="dialog-backdrop" *ngIf="dialogVisible$ | async" (click)="closeDialog()" >
+  <div class="dialog-box">
+    <h2>Dialog Box</h2>
+    <p>This is a simple dialog box content.</p>
+    <button (click)="closeDialog()" class="close-button">Close</button>
+  </div>
+</div>
