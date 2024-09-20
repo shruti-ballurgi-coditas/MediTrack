@@ -13,11 +13,13 @@
         flex-direction: column;
         gap: 0.5rem;
     }
-    .slots-container {
+    .time-container {
         display: flex;
+        flex-direction: column;
         gap: 0.25rem;
 
         .chip {
+            width: 15.5rem;
             background-color: rgb(42, 42, 148);
             color: white;
             font-weight: bold;

@@ -7,8 +7,11 @@
     padding: 0.75rem;
     position: fixed;
     top: 0;
-    background-color: white;
-    box-shadow: 0 4px 0 rgb(210, 210, 210, 0.1);
+    // background-color: white;
+    background-color: rgb(42, 42, 148);
+    box-shadow: 0 4px 10px rgb(210, 210, 210, 0.5);
+    color: white;
+    font-weight: bold;
 
     .upload-image {
         margin-right: 1.5rem;

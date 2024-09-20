@@ -180,7 +180,7 @@ export class DashboardComponent {
     console.log(formData.getAll('file'));
     this.http
       .post(
-        'http://192.168.101.126:8000/generator/generate_schedule/',
+        'http://192.168.101.190:8000/generator/generate-schedule/',
         formData
       )
       .subscribe({

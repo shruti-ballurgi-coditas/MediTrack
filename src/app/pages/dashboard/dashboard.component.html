@@ -2,7 +2,7 @@
     <div class="file-upload-container">
         <form class="form-container" [formGroup]="fileUploadForm" (ngSubmit)="uploadImg()" enctype="multipart/form-data">
             <h3>Upload Your Medication Schedule</h3>
-            <label for="file-input" class="custom-file-input">{{ fileName || 'Upload File' }}</label>
+            <label for="file-input" class="custom-file-input">{{ fileName || 'Click to upload an Image' }}</label>
             <input type="file" placeholder="Upload Image.." class="file-input" formControlName="imgFile" id="file-input" (change)="onFileSelected($event)"/>
             <button type="submit" class="upload-button">Upload</button>
         </form>
