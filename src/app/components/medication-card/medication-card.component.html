@@ -2,21 +2,21 @@
     <div class="medication-details">
         <div class="medication-name">
             <h4>Medicine Name: {{data.medicine_name}}</h4>
-            <div (click)="openDialog()" class="i-button">
+            <div (click)="openDialog(data)" class="i-button">
                 <span>i</span>
             </div>
         </div>
         <span *ngIf="data.start_date">Start Date: {{data.start_date}}</span>
         <span *ngIf="data.frequency">Frequency: {{data.frequency}}</span>
-        <span *ngIf="data.dose">Dosage: {{data.dose}}</span>
-        <span *ngIf="data.description">Decription: {{data.description}}</span>
+        <span *ngIf="data.dosage">Dosage: {{data.dosage}}</span>
     </div>
-    <div class="slots-container">
-        <ng-container *ngFor="let slot of data.slots">
-            <span *ngIf="slot !== false" class="chip">{{slot}}</span>
+    <div class="time-container">
+        <ng-container *ngFor="let schedule of data.schedule">
+            <span class="chip">Time: {{schedule.time}} | Slot: {{schedule.slot.start}} - {{schedule.slot.end}}</span>
         </ng-container>
     </div>
 
 </div>
+<!-- <app-dialog ></app-dialog> -->
 
 

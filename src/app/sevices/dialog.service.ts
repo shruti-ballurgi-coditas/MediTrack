@@ -7,15 +7,16 @@ import { BehaviorSubject } from 'rxjs';
 export class DialogService {
 
   constructor() { }
-
-  private dialogVisibleSubject = new BehaviorSubject<boolean>(false);
+  public dialogData: any
+  private dialogVisibleSubject = new BehaviorSubject({});
   dialogVisible$ = this.dialogVisibleSubject.asObservable();
 
-  openDialog() {
-    this.dialogVisibleSubject.next(true);
+  openDialog(data: any) {
+    this.dialogData = data;
+    this.dialogVisibleSubject.next({"visible":true,"dialogData":data});
   }
 
   closeDialog() {
-    this.dialogVisibleSubject.next(false);
+    this.dialogVisibleSubject.next({"visible": false});
   }
 }

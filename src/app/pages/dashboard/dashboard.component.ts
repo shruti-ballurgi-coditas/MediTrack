@@ -178,7 +178,6 @@ export class DashboardComponent {
     if (this.fileName) {
       formData.append('image', this.selectedImg, this.selectedImg.name);
     }
-    console.log(formData.getAll('file'));
     this.http
       .post(
         'http://192.168.101.190:8000/generator/generate-schedule/',
@@ -191,9 +190,5 @@ export class DashboardComponent {
           this.fileName = ""
         },
       });
-  }
-
-  openDialog() {
-    this.dialogService.openDialog();
   }
 }

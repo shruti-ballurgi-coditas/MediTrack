@@ -1,7 +1,26 @@
-<div class="dialog-backdrop" *ngIf="dialogVisible$ | async" (click)="closeDialog()" >
+<div class="dialog-backdrop" *ngIf="dialogVisible" (click)="closeDialog()" >
   <div class="dialog-box">
-    <h2>Dialog Box</h2>
-    <p>This is a simple dialog box content.</p>
+    <h2>Side Effects & Links</h2>
+    <div class="sideEffects-links-container">
+        <div class="container">
+            <h4>SideEffects</h4>
+            <div class="sideEffects-container">
+                <ul>
+                    <ng-container *ngFor="let sideEffect of dialogData.side_effects">
+                        <li>{{sideEffect}}</li>
+                    </ng-container>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <h4>Links</h4>
+            <div class="links-container">
+                <ng-container *ngFor="let link of dialogData.links">
+                    <span><a [href]="link"  target="_blank">Link</a></span>
+                </ng-container>
+            </div>
+        </div>
+    </div>
     <button (click)="closeDialog()" class="close-button">Close</button>
   </div>
 </div>

@@ -4,13 +4,14 @@ import { DialogService } from 'src/app/sevices/dialog.service';
 @Component({
   selector: 'app-medication-card',
   templateUrl: './medication-card.component.html',
-  styleUrls: ['./medication-card.component.scss']
+  styleUrls: ['./medication-card.component.scss'],
 })
 export class MedicationCardComponent {
-  constructor(private dialogService: DialogService){}
- @Input() data : any;
+  constructor(private dialogService: DialogService) {}
+  @Input() data: any;
 
- openDialog() {
-  this.dialogService.openDialog();
-}
+  openDialog(data: any) {
+    this.dialogService.dialogData = data;
+    this.dialogService.openDialog(data);
+  }
 }
