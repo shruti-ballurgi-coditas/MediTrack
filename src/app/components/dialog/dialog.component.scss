@@ -29,6 +29,19 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            .sideEffects-title {
+                display: flex;
+                gap: 1rem;
+                justify-content: space-between;
+
+                .sideEffects-button {
+                    border: none;
+                    color: rgb(42, 42, 148);
+                    cursor: pointer;
+                    background-color: white;
+                    margin-top: 0;
+                                }
+            }
             .sideEffects-container {
                 ul {
                     display: flex;
@@ -58,6 +71,46 @@
             }
         }
     }
+
+    // .warnings-container {
+        
+        .warnings-container {
+            // padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .warning {
+                display: flex;
+                gap: 6rem;
+                justify-content: space-between;
+                align-items: center;
+
+                .warning-description {
+                    font-size: 14px;
+                    line-height: 18px;
+                    font-weight: 400;
+                    width: 40rem;
+                }
+
+                .warning-severity {
+                    padding: 0.5rem;
+                    border-radius: 0.25rem;
+                    color: white;
+                    font-weight: bold;
+                    width: 11rem;
+                    text-align: center;
+                }
+                .high {
+                    background-color: red;
+                }
+
+                .medium {
+                    background-color: orange;
+                }
+            }
+        }
+    // }
 }
 
 button {

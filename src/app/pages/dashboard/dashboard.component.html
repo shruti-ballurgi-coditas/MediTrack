@@ -7,6 +7,22 @@
             <button type="submit" class="upload-button">Upload</button>
         </form>
     </div>
+    <div class="display-patient-info" *ngIf="cardData">
+        <div class="patient-info-container">
+            <h3>Patient's Information</h3>
+            <div class="info-container">
+                <div class="patients-name">
+                    <p><span class="patient-details-title">Name:  </span>{{cardData.patient_information.name}}</p>
+                </div>
+                <div class="patients-details">
+                    <p><span class="patient-details-title">Age:  </span>{{cardData.patient_information.age}}</p>
+                    <p><span class="patient-details-title">Height:  </span>{{cardData.patient_information.height}}</p>
+                    <p><span class="patient-details-title">Weight:  </span>{{cardData.patient_information.weight}}</p>
+                    <p><span class="patient-details-title">BMI:  </span>{{cardData.patient_information.bmi}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="display-medication-container">
         <div *ngIf="!cardData;else other" class="noData-container">
             <h3>Upload prescription to see the Schedules</h3>
@@ -14,6 +30,7 @@
         <ng-template #other>
             <div class="header">
                 <h3>Medication Schedules</h3>
+                <button class="warnings-button" (click)="openWarningsDialog()">Warnings</button>
             </div>
             <div class="cards-container">
                 <ng-container *ngFor="let card of cardData.medication_schedules">

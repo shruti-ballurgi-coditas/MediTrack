@@ -1,21 +1,23 @@
-<div class="dialog-backdrop" *ngIf="dialogVisible" (click)="closeDialog()" >
-  <div class="dialog-box">
-    <h2>Side Effects & Links</h2>
+<div class="dialog-backdrop" *ngIf="dialogVisible">
+  <div class="dialog-box" *ngIf="dialogData.type === 'medication-card'">
     <div class="sideEffects-links-container">
         <div class="container">
-            <h4>SideEffects</h4>
-            <div class="sideEffects-container">
+            <div class="sideEffects-title" *ngIf="dialogData.data.side_effects"> 
+                <h4>SideEffects</h4>
+                <button (click)="showSideEffects($event)" class="sideEffects-button">{{isSideEffectsVisible ? "Show Side-Effects": "Hide Side-Effects"}}</button>
+            </div>
+            <div class="sideEffects-container" *ngIf="isSideEffectsVisible === false">
                 <ul>
-                    <ng-container *ngFor="let sideEffect of dialogData.side_effects">
+                    <ng-container *ngFor="let sideEffect of dialogData.data.side_effects">
                         <li>{{sideEffect}}</li>
                     </ng-container>
                 </ul>
             </div>
         </div>
-        <div class="container">
+        <div class="container" *ngIf="dialogData.data.links">
             <h4>Links</h4>
             <div class="links-container">
-                <ng-container *ngFor="let link of dialogData.links">
+                <ng-container *ngFor="let link of dialogData.data.links">
                     <span><a [href]="link"  target="_blank">Link</a></span>
                 </ng-container>
             </div>
@@ -23,4 +25,19 @@
     </div>
     <button (click)="closeDialog()" class="close-button">Close</button>
   </div>
+  <div class="dialog-box" *ngIf="dialogData.type === 'warnings'">
+    <h2>Warnings</h2>
+    <div class="warnings-container">
+        <ng-container *ngFor="let warning of dialogData.warningData">
+            <div class="warning">
+                <p class="warning-description">{{warning.warning}}</p>
+                <span class="warning-severity" [ngClass]="{'high':warning.severity === 'High','medium': warning.severity==='Medium'}">{{warning.severity}}</span>
+            </div>
+
+        </ng-container>
+    </div>
+    <button (click)="closeDialog()" class="close-button">Close</button>
+  </div>
+
+  
 </div>

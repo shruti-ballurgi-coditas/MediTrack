@@ -12,6 +12,7 @@ export class MedicationCardComponent {
 
   openDialog(data: any) {
     this.dialogService.dialogData = data;
-    this.dialogService.openDialog(data);
+    this.dialogService.openDialog({type:"medication-card",data});
   }
 }
+

@@ -180,7 +180,7 @@ export class DashboardComponent {
     }
     this.http
       .post(
-        'http://192.168.101.190:8000/generator/generate-schedule/',
+        'https://8299-103-200-100-48.ngrok-free.app/generator/generate-schedule/',
         formData
       )
       .subscribe({
@@ -190,5 +190,10 @@ export class DashboardComponent {
           this.fileName = ""
         },
       });
+  }
+
+  openWarningsDialog() {
+      this.dialogService.dialogData = this.cardData.warnings;
+      this.dialogService.openDialog({type:"warnings",warningData:this.cardData.warnings});
   }
 }

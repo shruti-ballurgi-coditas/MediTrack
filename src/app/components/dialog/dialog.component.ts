@@ -10,9 +10,12 @@ export class DialogComponent implements OnInit{
   dialogVisible$ = this.dialogService.dialogVisible$;
   dialogData: any
   dialogVisible!: boolean;
+  isSideEffectsVisible: boolean = true;
+  isHideEffectsVisible: boolean = false;
 
   constructor(public dialogService: DialogService) {}
   ngOnInit(): void {
+
     this.dialogService.dialogVisible$.subscribe((data: any) => {
       if (data && data['visible']) {
         this.dialogVisible = true;
@@ -23,7 +26,23 @@ export class DialogComponent implements OnInit{
     });
   }
 
+  showSideEffects(data: any){
+    console.log(data.target.innerText)
+    let buttonVisibilty = data.target.innerText;
+   
+    if(buttonVisibilty === "Show Side-Effects"){
+      this.isSideEffectsVisible = false;
+      this.isHideEffectsVisible = true;
+    }
+    if(buttonVisibilty === "Hide Side-Effects"){
+      this.isSideEffectsVisible = true;
+      this.isHideEffectsVisible = false;
+    }
+  }
+
   closeDialog() {
+    this.isSideEffectsVisible = true;
+    this.isHideEffectsVisible = false;
     this.dialogService.closeDialog();
   }
 }
