@@ -187,9 +187,8 @@ export class DashboardComponent {
       )
       .subscribe({
         next: (response: any) => {
-          console.log(response);
           this.cardData = response;
-          this.fileName = ""
+          // this.fileName = ""
           this.isUploadBtnClicked = false;
         },
         error:(err:Error)=> {
