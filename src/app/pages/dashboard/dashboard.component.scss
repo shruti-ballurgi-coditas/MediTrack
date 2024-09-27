@@ -109,7 +109,7 @@
             }
         }
         .cards-container {
-            overflow-x: scroll;
+            overflow-x: auto;
             display: flex;
             gap: 1rem;
             padding: 1rem 0 2rem 0;
@@ -119,6 +119,23 @@
 
 .patient-details-title {
     font-weight: bold;
+}
+
+.loading-animation {
+    animation: fadeInOut 1.5s infinite ease-in-out;
+    color: #000;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.3;
+    }
 }
 
 

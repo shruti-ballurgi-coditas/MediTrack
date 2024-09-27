@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DialogService } from 'src/app/sevices/dialog.service';
 
-// const data = {
 //   prescription: {
 //     prescription_id: 9,
 //     prescription_image:
@@ -161,12 +160,14 @@ export class DashboardComponent {
   constructor(private http: HttpClient,public dialogService: DialogService) {}
   cardData: any;
   selectedImg!: File;
+  isUploadBtnClicked: boolean = false;
   fileUploadForm = new FormGroup({
     imgFile: new FormControl([null]),
   });
 
   fileName: string = '';
   onFileSelected(event: any) {
+    
     const file = event.target.files[0];
     if (file) {
       this.selectedImg = file;
@@ -174,6 +175,7 @@ export class DashboardComponent {
     }
   }
   uploadImg() {
+    this.isUploadBtnClicked = true;
     const formData = new FormData();
     if (this.fileName) {
       formData.append('image', this.selectedImg, this.selectedImg.name);
@@ -188,7 +190,11 @@ export class DashboardComponent {
           console.log(response);
           this.cardData = response;
           this.fileName = ""
+          this.isUploadBtnClicked = false;
         },
+        error:(err:Error)=> {
+          this.isUploadBtnClicked = false;
+        }
       });
   }
 

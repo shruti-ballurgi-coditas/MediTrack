@@ -25,7 +25,7 @@
     </div>
     <div class="display-medication-container">
         <div *ngIf="!cardData;else other" class="noData-container">
-            <h3>Upload prescription to see the Schedules</h3>
+            <h3 [ngClass]="{'loading-animation':isUploadBtnClicked}">{{!isUploadBtnClicked ?'Upload prescription to see the Schedules': 'Loading...'}}</h3>
         </div>
         <ng-template #other>
             <div class="header">
