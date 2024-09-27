@@ -176,6 +176,7 @@ export class DashboardComponent {
   }
   uploadImg() {
     this.isUploadBtnClicked = true;
+    this.cardData = null;
     const formData = new FormData();
     if (this.fileName) {
       formData.append('image', this.selectedImg, this.selectedImg.name);
