@@ -180,7 +180,7 @@ export class DashboardComponent {
     }
     this.http
       .post(
-        'https://8299-103-200-100-48.ngrok-free.app/generator/generate-schedule/',
+        'http://192.168.101.190:8000/generator/generate-schedule/',
         formData
       )
       .subscribe({

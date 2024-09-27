@@ -30,7 +30,10 @@
         <ng-template #other>
             <div class="header">
                 <h3>Medication Schedules</h3>
-                <button class="warnings-button" (click)="openWarningsDialog()">Warnings</button>
+                <button class="warnings-button" (click)="openWarningsDialog()">
+                    <img src="../../../assets/warning.png" alt=""/>
+                    Warnings
+                </button>
             </div>
             <div class="cards-container">
                 <ng-container *ngFor="let card of cardData.medication_schedules">
