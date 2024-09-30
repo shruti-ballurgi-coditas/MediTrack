@@ -254,7 +254,7 @@ export class DashboardComponent {
             next: (response: any) => {
               const data = response;
               this.allergiesData= data['drug-allergy-warnings'];
-              this.warningsData= data['response.d2d-warnings'];
+              this.warningsData= data['d2d-warnings'];
               console.log(response,"allergies")
             },
             error: (err: Error) => {
@@ -275,38 +275,7 @@ export class DashboardComponent {
     this.dialogService.openDialog({
       type: 'warnings',
       // warningData: this.warningsData,
-      warningData: [
-        {
-            "drug_names": [
-                "TAB. ABCIXIMAB",
-                "TAB. VOMILAST"
-            ],
-            "warning": "Bleeding risk increased",
-            "description": "Abciximab in TAB. ABCIXIMAB and Doxylamine in TAB. VOMILAST may increase the risk of bleeding.",
-            "reason": "Pharmacodynamic interaction",
-            "severity": "High"
-        },
-        {
-            "drug_names": [
-                "TAB. ABCIXIMAB",
-                "CAP. ZOCLAR 500"
-            ],
-            "warning": "Risk of bleeding and gastrointestinal toxicity",
-            "description": "Abciximab in TAB. ABCIXIMAB and Zoclar in CAP. ZOCLAR 500 may increase the risk of bleeding and gastrointestinal toxicity.",
-            "reason": "Pharmacodynamic interaction",
-            "severity": "High"
-        },
-        {
-            "drug_names": [
-                "TAB. VOMILAST",
-                "TAB. GESTAKIND 10/SR"
-            ],
-            "warning": "Increased risk of dizziness and lightheadedness",
-            "description": "Doxylamine in TAB. VOMILAST and unknown content in TAB. GESTAKIND 10/SR may increase the risk of dizziness and lightheadedness.",
-            "reason": "Pharmacodynamic interaction",
-            "severity": "Medium"
-        }
-    ],
+      warningData: this.warningsData
     });
   }
 
@@ -315,18 +284,7 @@ export class DashboardComponent {
     this.dialogService.openDialog({
       type: 'allergies',
       // warningData: this.allergiesData,
-      warningData: [
-        {
-            "patient_allergy_name": "Mouse Proteins",
-            "drug_names": [
-                "TAB. ABCIXIMAB"
-            ],
-            "warning": "Allergic reaction risk",
-            "description": "Abciximab in TAB. ABCIXIMAB is derived from mouse proteins and may cause an allergic reaction.",
-            "reason": "Hypersensitivity reaction",
-            "severity": "High"
-        }
-    ],
+      warningData: this.allergiesData
     });
   }
 }
