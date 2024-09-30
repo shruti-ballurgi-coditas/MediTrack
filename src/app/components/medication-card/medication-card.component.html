@@ -1,7 +1,7 @@
 <div class="medication-card">
     <div class="medication-details">
         <div class="medication-name">
-            <h4>Medicine Name: {{data.medicine_name}}</h4>
+            <h4>{{data.medicine_name}}</h4>
             <div (click)="openDialog(data)" class="i-button">
                 <span>i</span>
             </div>
@@ -12,7 +12,7 @@
     </div>
     <div class="time-container">
         <ng-container *ngFor="let schedule of data.schedule; let i = index; let isLast = last">
-            <span>{{ schedule.day_time === "Morning"?"Mor":schedule.day_time === "Afternoon"?"Aft": schedule.day_time === "Evening" ? "Eve" : "Nig" }}</span>
+            <span>{{ schedule.day_time === "Morning"?"Morn.":schedule.day_time === "Afternoon"?"After.": schedule.day_time === "Eve." ? "Eve" : "Night" }}</span>
             <!-- Only show '|' if it's not the last item -->
             <span *ngIf="!isLast"> | </span>
         </ng-container>

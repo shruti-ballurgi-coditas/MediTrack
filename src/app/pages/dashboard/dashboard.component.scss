@@ -6,9 +6,9 @@
   .file-upload-container {
     display: flex;
     // align-items: center;
-    justify-content: center;
-    height: 40%;
-    margin: 4rem 12rem 1rem 12rem;
+    justify-content: space-around;
+    // height: 40%;
+    margin: 5rem 12rem 2rem 12rem;
     gap: 6rem;
 
     .form-container {
@@ -16,6 +16,7 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
+      justify-content: space-evenly;
       background-color: #f0f1ff;
       padding: 1.5rem;
       border-radius: 0.5rem;
@@ -25,11 +26,13 @@
 
       .custom-file-input {
         display: inline-block;
-        width: 88%;
+        width: -webkit-fill-available;
+        // width: 88%;
         padding: 0.75rem 1rem;
         background-color: white;
         cursor: pointer;
         border-radius: 0.25rem;
+        text-align: center;
       }
       input[type="file"] {
         display: none;
@@ -66,6 +69,7 @@
           border-radius: 0.25rem;
           background-color: white;
           padding: 1rem;
+          margin-top: 0.5rem;
 
           .patients-name {
             display: flex;
@@ -87,7 +91,7 @@
     padding: 0.75rem !important;
   }
   .display-medication-container {
-    padding: 0.75rem 0 0 6rem;
+    padding: 2rem 0 0 6rem;
     height: 60%;
     background-color: #f0f1ff;
 

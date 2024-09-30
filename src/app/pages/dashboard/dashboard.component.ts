@@ -248,21 +248,24 @@ export class DashboardComponent {
     this.commonService.uploadImage(formData).subscribe({
       next: (response: any) => {
         this.cardData = response;
-        // this.fileName = ""
         this.isUploadBtnClicked = false;
         if(this.cardData) {
-          this.commonService.getWarningsAndAllergies({"medications":this.cardData}).subscribe({
+          this.commonService.getWarningsAndAllergies(this.cardData).subscribe({
             next: (response: any) => {
               const data = response;
               this.allergiesData= data['drug-allergy-warnings'];
               this.warningsData= data['response.d2d-warnings'];
               console.log(response,"allergies")
+            },
+            error: (err: Error) => {
+              console.error('Error fetching warnings and allergies:', err);
             }
           })
         }
       },
       error: (err: Error) => {
         this.isUploadBtnClicked = false;
+        console.error('Error uploading image:', err);
       },
     });
   }
