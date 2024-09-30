@@ -11,12 +11,15 @@
         <span *ngIf="data.dosage">Dosage: {{data.dosage}}</span>
     </div>
     <div class="time-container">
-        <ng-container *ngFor="let schedule of data.schedule">
-            <span class="chip">Time: {{schedule.time}} | Slot: {{schedule.slot.start}} - {{schedule.slot.end}}</span>
+        <ng-container *ngFor="let schedule of data.schedule; let i = index; let isLast = last">
+            <span>{{ schedule.day_time === "Morning"?"Mor":schedule.day_time === "Afternoon"?"Aft": schedule.day_time === "Evening" ? "Eve" : "Nig" }}</span>
+            <!-- Only show '|' if it's not the last item -->
+            <span *ngIf="!isLast"> | </span>
         </ng-container>
     </div>
 
 </div>
+
 <!-- <app-dialog ></app-dialog> -->
 
 

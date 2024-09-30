@@ -1,142 +1,191 @@
 .dashboard {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
-    .file-upload-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 40%;
-        margin: 4rem 0 1rem 0;
-        
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            background-color: rgb(223, 223, 249);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            
-            .custom-file-input {
-                display: inline-block;
-                width: 88%;
-                padding:0.75rem 1rem;
-                background-color: white;
-                cursor: pointer;
-                border-radius: 0.25rem;
-            }
-            input[type="file"] {
-                display: none;
-            }
-            
-            .upload-button {
-                padding: 0.5rem;
-                color: white;
-                background-color: rgb(42, 42, 148);
-                border-radius: 0.25rem;
-                border: none;
-                width: 100%;
-                cursor: pointer;
-            }
-        }
+  .file-upload-container {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    height: 40%;
+    margin: 4rem 12rem 1rem 12rem;
+    gap: 6rem;
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      background-color: #f0f1ff;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 10px rgba(210, 210, 210, 0.5);
+      transition: transform 1s ease;
+      // z-index: -200;
+
+      .custom-file-input {
+        display: inline-block;
+        width: 88%;
+        padding: 0.75rem 1rem;
+        background-color: white;
+        cursor: pointer;
+        border-radius: 0.25rem;
+      }
+      input[type="file"] {
+        display: none;
+      }
+
+      .upload-button {
+        padding: 0.5rem;
+        color: white;
+        background-color: #5664f5;
+        border-radius: 0.25rem;
+        border: none;
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+
+    .form {
+      width: 30%;
+      transform: translateX(-9px);
     }
 
     .display-patient-info {
-        height: 30%;
-        background-color: rgb(247 247 255);
-        
-        .patient-info-container {
-            
-            padding: 1rem;
-            
-            .info-container {
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-                border-radius: 0.25rem;
-                background-color: white;
-                padding: 1rem;
+      width: 35%;
+      background-color: #f0f1ff;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 10px rgba(210, 210, 210, 0.5);
+      .patient-info-container {
+        padding: 1rem;
 
-                .patients-name {
-                    display: flex;
-                    gap: 1rem;
-                    justify-content: space-between;
-                }
+        .info-container {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          border-radius: 0.25rem;
+          background-color: white;
+          padding: 1rem;
 
-                .patients-details {
-                    display: flex;
-                    gap: 4rem;
-                    justify-content: space-between;
-                }
-            }
-        }
-
-    }
-
-    .display-medication-container {
-        padding: 0.75rem;
-        height: 60%;
-        background-color: rgb(223, 223, 249);
-        
-        .noData-container {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgb(116, 116, 116);
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            .warnings-button {
-                margin: 0;
-                background-color: rgb(152, 27, 27);
-                color: white;
-                padding: 0.5rem;
-                border: none;
-                border-radius: 0.25rem;
-                display: flex;
-                gap: 0.15rem;
-                align-items: center;
-
-                img {
-                    width: 1rem;
-                    height: 1rem;
-                }
-            }
-        }
-        .cards-container {
-            overflow-x: auto;
+          .patients-name {
             display: flex;
             gap: 1rem;
-            padding: 1rem 0 2rem 0;
+            justify-content: space-between;
+          }
+
+          .patients-details {
+            display: flex;
+            gap: 4rem;
+            justify-content: space-between;
+          }
         }
+      }
     }
+  }
+
+  .noCardData-container {
+    padding: 0.75rem !important;
+  }
+  .display-medication-container {
+    padding: 0.75rem 0 0 6rem;
+    height: 60%;
+    background-color: #f0f1ff;
+
+    .noData-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(116, 116, 116);
+    }
+
+    .header {
+      display: flex;
+      // justify-content: space-between;
+      gap: 1.5rem;
+
+      .button-container {
+        display: flex;
+        gap: 0.75rem;
+        .warnings-button {
+          width: 6rem;
+          font-weight: bold;
+          text-align: center;
+          margin: 0;
+          background-color: #f5a456;
+          color: white;
+          padding: 0.5rem;
+          border: none;
+          border-radius: 0.25rem;
+          display: flex;
+          gap: 0.15rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.25rem;
+          cursor: pointer;
+
+          img {
+            width: 1rem;
+            height: 1rem;
+          }
+        }
+        .allergies-button {
+          text-align: center;
+          width: 6rem;
+          font-weight: bold;
+          margin: 0;
+          background-color: #56c4f5;
+          color: white;
+          padding: 0.5rem;
+          border: none;
+          border-radius: 0.25rem;
+          display: flex;
+          gap: 0.35rem;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          img {
+            width: 1rem;
+            height: 1rem;
+          }
+        }
+      }
+    }
+    .cards-container {
+      max-width: 76rem;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      display: flex;
+      gap: 1rem;
+      justify-content: space-evenly;
+      margin: 1rem 0rem 2rem 0rem;
+    }
+
+    .single-card-container {
+      justify-content: center;
+    }
+  }
 }
 
 .patient-details-title {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .loading-animation {
-    animation: fadeInOut 1.5s infinite ease-in-out;
-    color: #000;
+  animation: fadeInOut 1.5s infinite ease-in-out;
+  color: #000;
 }
 
 @keyframes fadeInOut {
-    0% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.3;
-    }
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
 }
-
-
-

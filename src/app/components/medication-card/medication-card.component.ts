@@ -9,6 +9,7 @@ import { DialogService } from 'src/app/sevices/dialog.service';
 export class MedicationCardComponent {
   constructor(private dialogService: DialogService) {}
   @Input() data: any;
+  schedules=["Morning","Afternoon","Evening","Night"]
 
   openDialog(data: any) {
     this.dialogService.dialogData = data;

@@ -1,0 +1,41 @@
+<div class="warning">
+  <div class="warning-container">
+    <div class="title-container">
+      <div class="drugs-container">
+        <div class="drugs">
+
+            <h4>{{ data.drug_names[0] }}</h4>
+            <img
+              [src]=" '../../../assets/interaction.svg'"
+              class="interaction-img"
+              *ngIf="data.drug_names.length === 2"
+            />
+            <span *ngIf="data.drug_names[1]">{{ data.drug_names[1] }}</span>
+        </div>
+      </div>
+
+      <div class="severity-container">
+          <div
+            class="severity"
+            [ngClass]="{
+              high: data.severity === 'High',
+              medium: data.severity === 'Medium',
+              low: data.severity === 'Low'
+            }"
+          >
+            {{ data.severity }}
+          </div>
+      </div>
+    </div>
+    <hr />
+    <div class="description-container">
+      <h4>DESCRIPTION</h4>
+      <p class="description">{{ data.warning }}</p>
+    </div>
+    <hr />
+    <div class="extended-description">
+      <h4>EXTENDED DESCRIPTION</h4>
+      <p class="description">{{ data.description }}</p>
+    </div>
+  </div>
+</div>

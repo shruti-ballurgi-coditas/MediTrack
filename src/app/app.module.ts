@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { WarningsCardComponent } from './components/warnings-card/warnings-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MedicationCardComponent,
     HeaderComponent,
     FooterComponent,
-    DialogComponent
+    DialogComponent,
+    WarningsCardComponent
   ],
   imports: [
     BrowserModule,

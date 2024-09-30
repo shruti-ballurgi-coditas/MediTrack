@@ -1,0 +1,68 @@
+.warning {
+    background-color:#f8f8f9;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(210, 210, 210, 0.5);
+
+    h4{
+        color: #515251;
+    }
+    .warning-container {
+        padding: 1rem;
+        .title-container {
+            padding: 0.25rem;
+            display: flex;
+            justify-content: center;
+            .drugs-container {
+                width: 70%;
+                
+                .drugs {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1rem;
+
+                    .interaction-img {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+            }
+
+            .severity-container {
+                width: 30%;
+                .severity {
+                    width: 4rem;
+                    padding: 0.15rem 0.5rem;
+                    border-radius: 1rem;
+                    background-color: #f56456;
+                    color: white;
+                    text-align: center;
+                }
+                .high {
+                    background-color: #f56456;
+                }
+                .medium {
+                    background-color: #e8b813;
+                }
+                .low {
+                    background-color: rgb(69, 165, 69);
+                }
+            }
+        }
+
+        .description-container {
+            padding: 0.25rem;
+            .description {
+                color: 
+                #878788;
+            }
+        }
+
+        .extended-description {
+            padding: 0.25rem;
+            .description {
+                color: #878788;
+            }
+        }
+    }
+}

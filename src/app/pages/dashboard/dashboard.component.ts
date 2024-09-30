@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DialogService } from 'src/app/sevices/dialog.service';
+import { CommonService } from 'src/app/sevices/common.service';
 
 //   prescription: {
 //     prescription_id: 9,
@@ -157,8 +158,71 @@ import { DialogService } from 'src/app/sevices/dialog.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  constructor(private http: HttpClient,public dialogService: DialogService) {}
+  constructor(
+    public dialogService: DialogService,
+    private commonService: CommonService
+  ) {}
   cardData: any;
+  // cardData:any={
+  //   "medication_schedules": [
+  //       {
+  //           "start_date": "2023-08-30",
+  //           "medicine_name": "TAB. ABCIXIMAB",
+  //           "frequency": 1,
+  //           "dosage": "1 tablet",
+  //           "schedule": [
+  //               {
+  //                   "time": "08:00",
+  //                   "slot": {
+  //                       "start": "08:00",
+  //                       "end": "10:00"
+  //                   }
+  //               }
+  //           ],
+  //           "description": "Take in the morning for 8 days",
+  //           "side_effects": [
+  //               "Bleeding",
+  //               "Blurred vision",
+  //               "Confusion",
+  //               "Dizziness",
+  //               "Back pain",
+  //               "Bruising or bleeding"
+  //           ]
+  //       },
+  //       {
+  //           "start_date": "2023-08-30",
+  //           "medicine_name": "TAB. VOMILAST",
+  //           "frequency": 2,
+  //           "dosage": "1 tablet",
+  //           "schedule": [
+  //               {
+  //                   "time": "08:00",
+  //                   "slot": {
+  //                       "start": "08:00",
+  //                       "end": "10:00"
+  //                   }
+  //               },
+  //               {
+  //                   "time": "20:00",
+  //                   "slot": {
+  //                       "start": "20:00",
+  //                       "end": "22:00"
+  //                   }
+  //               }
+  //           ],
+  //           "description": "Take in the morning and at night after food for 8 days",
+  //           "side_effects": [
+  //               "Dryness in mouth",
+  //               "Constipation",
+  //               "Lightheadedness",
+  //               "Dizziness",
+  //               "Sleepiness",
+  //               "Fatigue"
+  //           ]
+  //       },
+  //     ]};
+  warningsData :any;
+  allergiesData :any;
   selectedImg!: File;
   isUploadBtnClicked: boolean = false;
   fileUploadForm = new FormGroup({
@@ -167,13 +231,13 @@ export class DashboardComponent {
 
   fileName: string = '';
   onFileSelected(event: any) {
-    
     const file = event.target.files[0];
     if (file) {
       this.selectedImg = file;
       this.fileName = file.name;
     }
   }
+
   uploadImg() {
     this.isUploadBtnClicked = true;
     this.cardData = null;
@@ -181,25 +245,85 @@ export class DashboardComponent {
     if (this.fileName) {
       formData.append('image', this.selectedImg, this.selectedImg.name);
     }
-    this.http
-      .post(
-        'http://192.168.101.190:8000/generator/generate-schedule/',
-        formData
-      )
-      .subscribe({
-        next: (response: any) => {
-          this.cardData = response;
-          // this.fileName = ""
-          this.isUploadBtnClicked = false;
-        },
-        error:(err:Error)=> {
-          this.isUploadBtnClicked = false;
+    this.commonService.uploadImage(formData).subscribe({
+      next: (response: any) => {
+        this.cardData = response;
+        // this.fileName = ""
+        this.isUploadBtnClicked = false;
+        if(this.cardData) {
+          this.commonService.getWarningsAndAllergies({"medications":this.cardData}).subscribe({
+            next: (response: any) => {
+              const data = response;
+              this.allergiesData= data['drug-allergy-warnings'];
+              this.warningsData= data['response.d2d-warnings'];
+              console.log(response,"allergies")
+            }
+          })
         }
-      });
+      },
+      error: (err: Error) => {
+        this.isUploadBtnClicked = false;
+      },
+    });
   }
 
   openWarningsDialog() {
-      this.dialogService.dialogData = this.cardData.warnings;
-      this.dialogService.openDialog({type:"warnings",warningData:this.cardData.warnings});
+    // this.dialogService.dialogData = this.cardData.warnings;
+    this.dialogService.openDialog({
+      type: 'warnings',
+      // warningData: this.warningsData,
+      warningData: [
+        {
+            "drug_names": [
+                "TAB. ABCIXIMAB",
+                "TAB. VOMILAST"
+            ],
+            "warning": "Bleeding risk increased",
+            "description": "Abciximab in TAB. ABCIXIMAB and Doxylamine in TAB. VOMILAST may increase the risk of bleeding.",
+            "reason": "Pharmacodynamic interaction",
+            "severity": "High"
+        },
+        {
+            "drug_names": [
+                "TAB. ABCIXIMAB",
+                "CAP. ZOCLAR 500"
+            ],
+            "warning": "Risk of bleeding and gastrointestinal toxicity",
+            "description": "Abciximab in TAB. ABCIXIMAB and Zoclar in CAP. ZOCLAR 500 may increase the risk of bleeding and gastrointestinal toxicity.",
+            "reason": "Pharmacodynamic interaction",
+            "severity": "High"
+        },
+        {
+            "drug_names": [
+                "TAB. VOMILAST",
+                "TAB. GESTAKIND 10/SR"
+            ],
+            "warning": "Increased risk of dizziness and lightheadedness",
+            "description": "Doxylamine in TAB. VOMILAST and unknown content in TAB. GESTAKIND 10/SR may increase the risk of dizziness and lightheadedness.",
+            "reason": "Pharmacodynamic interaction",
+            "severity": "Medium"
+        }
+    ],
+    });
+  }
+
+  openAllergiesDialog() {
+    // this.dialogService.dialogData = this.cardData.warnings;
+    this.dialogService.openDialog({
+      type: 'allergies',
+      // warningData: this.allergiesData,
+      warningData: [
+        {
+            "patient_allergy_name": "Mouse Proteins",
+            "drug_names": [
+                "TAB. ABCIXIMAB"
+            ],
+            "warning": "Allergic reaction risk",
+            "description": "Abciximab in TAB. ABCIXIMAB is derived from mouse proteins and may cause an allergic reaction.",
+            "reason": "Hypersensitivity reaction",
+            "severity": "High"
+        }
+    ],
+    });
   }
 }
