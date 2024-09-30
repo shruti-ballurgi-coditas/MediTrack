@@ -15,6 +15,10 @@ export class CommonService {
   }
 
   getWarningsAndAllergies(data: any) {
-    return this.http.post('http://192.168.101.190:8000/generator/d2d-interactions/',data);
+    return this.http.post('http://192.168.101.190:8000/generator/d2d-interactions/',data,{
+      'headers': {
+        'Content-Type': 'application/json'
+      }
+    });
   }
 }

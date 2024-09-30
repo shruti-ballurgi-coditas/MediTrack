@@ -17,6 +17,7 @@ export class DialogComponent implements OnInit{
   ngOnInit(): void {
 
     this.dialogService.dialogVisible$.subscribe((data: any) => {
+      console.log(data)
       if (data && data['visible']) {
         this.dialogVisible = true;
         this.dialogData = data.dialogData; 
@@ -27,7 +28,6 @@ export class DialogComponent implements OnInit{
   }
 
   showSideEffects(data: any){
-    console.log(data.target.innerText)
     let buttonVisibilty = data.target.innerText;
    
     if(buttonVisibilty === "Show Side-Effects"){
