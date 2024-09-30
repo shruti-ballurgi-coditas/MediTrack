@@ -32,6 +32,29 @@
       height: 2rem;
       cursor: pointer;
     }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+
+    .warnings-header {
+      display: flex;
+      align-items: center;
+      gap: 0 !important;
+
+      img {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
   }
 
   .sideEffects-links-container {

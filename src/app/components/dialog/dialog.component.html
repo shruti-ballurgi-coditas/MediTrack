@@ -5,13 +5,16 @@
         <div class="sideEffects-title" *ngIf="dialogData.data.side_effects">
           <div class="header-container">
             <h4>SideEffects</h4>
-            <button (click)="showSideEffects($event)" class="sideEffects-button">
+            <button
+              (click)="showSideEffects($event)"
+              class="sideEffects-button"
+            >
               {{
                 isSideEffectsVisible ? "Show Side-Effects" : "Hide Side-Effects"
               }}
             </button>
           </div>
-          <img src="../../../assets/close-window.png" (click)="closeDialog()"/>
+          <img src="../../../assets/close-window.png" (click)="closeDialog()" />
         </div>
         <div
           class="sideEffects-container"
@@ -21,7 +24,7 @@
             <ng-container
               *ngFor="let sideEffect of dialogData.data.side_effects"
             >
-              <li>{{ sideEffect }}</li>
+              <li>{{ sideEffect | capitalise }}</li>
             </ng-container>
           </ul>
         </div>
@@ -46,19 +49,22 @@
     }"
   >
     <div class="header-container">
-      <h2>{{ dialogData.type === "warnings" ? "Warnings" : "Allergies" }}</h2>
-      <img src="../../../assets/close-window.png" (click)="closeDialog()"/>
+      <div class="header" [ngClass]="{'warnings-header':dialogData.type === 'warnings'}">
+        <img
+          [src]="
+            dialogData.type === 'warnings'
+              ? '../../../assets/black_warning.png'
+              : '../../../assets/black_bacteria.png'
+          "
+        />
+        <h2>{{ dialogData.type === "warnings" ? "Warnings" : "Allergies" }}</h2>
+      </div>
+      <img src="../../../assets/close-window.png" (click)="closeDialog()" />
     </div>
     <div class="warnings-container">
       <ng-container *ngFor="let warning of dialogData.warningData">
-        <!-- <div class="warning">
-                <p class="warning-description">{{warning.warning}}</p>
-                <span class="warning-severity" [ngClass]="{'high':warning.severity === 'High','medium': warning.severity==='Medium'}">{{warning.severity}}</span>
-            </div> -->
-
         <app-warnings-card [data]="warning"></app-warnings-card>
       </ng-container>
     </div>
-    <!-- <button (click)="closeDialog()" class="close-button">Close</button> -->
   </div>
 </div>
