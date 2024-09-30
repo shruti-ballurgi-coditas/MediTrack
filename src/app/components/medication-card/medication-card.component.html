@@ -12,7 +12,7 @@
     </div>
     <div class="time-container">
         <ng-container *ngFor="let schedule of data.schedule; let i = index; let isLast = last">
-            <span>{{ schedule.day_time === "Morning"?"Mor":schedule.day_time === "Afternoon"?"Aft": schedule.day_time === "Evening" ? "Eve" : "Nig" }}</span>
+            <span>{{ schedule.day_time === "Morning"?"Mor":schedule.day_time === "Afternoon"?"Aft": schedule.day_time === "Evening" ? "Eve" : "Night" }}</span>
             <!-- Only show '|' if it's not the last item -->
             <span *ngIf="!isLast"> | </span>
         </ng-container>
