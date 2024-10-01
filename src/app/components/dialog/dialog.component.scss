@@ -12,6 +12,18 @@
   z-index: 2000;
 }
 
+.medication-dialog-box {
+  padding: 0 !important;
+  .sideEffects-title {
+    padding: 1rem;
+    background-color: #f0f1ff;
+    border-radius: 0.25rem;
+  }
+  .sideEffects-container {
+    padding: 0 1rem 1rem;
+  }
+}
+
 .dialog-box {
   background: white;
   padding: 1.25rem;
@@ -74,11 +86,17 @@
           display: flex;
           gap: 1rem;
 
+          .medicine-sideEffect-container {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+          }
+
           .sideEffects-button {
             border: none;
             color: #5664f5;
             cursor: pointer;
-            background-color: white;
+            background-color: transparent;
             margin-top: 0;
           }
 
@@ -167,6 +185,16 @@
   width: 42rem;
   max-height: 32rem;
   border-radius: 1rem;
+  padding: 0 !important;
+  .header-container {
+    padding: 1rem;
+    background-color: #f0f1ff;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  .warnings-container {
+    margin: 1rem;
+  }
 }
 
 button {

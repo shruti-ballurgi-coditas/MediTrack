@@ -10,8 +10,8 @@ export class DialogComponent implements OnInit{
   dialogVisible$ = this.dialogService.dialogVisible$;
   dialogData: any
   dialogVisible!: boolean;
-  isSideEffectsVisible: boolean = true;
-  isHideEffectsVisible: boolean = false;
+  isSideEffectsVisible: boolean = false;
+  isHideEffectsVisible: boolean = true;
 
   constructor(public dialogService: DialogService) {}
   ngOnInit(): void {
@@ -41,8 +41,8 @@ export class DialogComponent implements OnInit{
   }
 
   closeDialog() {
-    this.isSideEffectsVisible = true;
-    this.isHideEffectsVisible = false;
+    this.isSideEffectsVisible = false;
+    this.isHideEffectsVisible = true;
     this.dialogService.closeDialog();
   }
 }

@@ -2,7 +2,7 @@
   <div class="warning-container">
     <div class="title-container">
       <div class="drugs-container">
-        <div class="drugs">
+        <div class="drugs" *ngIf="data.drug_names">
 
             <h4>{{ data.drug_names[0] }}</h4>
             <img
@@ -11,6 +11,16 @@
               *ngIf="data.drug_names.length === 2"
             />
             <h4 *ngIf="data.drug_names[1]">{{ data.drug_names[1] }}</h4>
+        </div>
+        <div class="drugs" *ngIf="data.drug_name">
+
+            <h4>{{ data.drug_name[0] }}</h4>
+            <img
+              [src]=" '../../../assets/interaction.svg'"
+              class="interaction-img"
+              *ngIf="data.drug_name.length === 2"
+            />
+            <h4 *ngIf="data.drug_name[1]">{{ data.drug_name[1] }}</h4>
         </div>
       </div>
 

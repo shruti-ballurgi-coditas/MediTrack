@@ -1,10 +1,13 @@
 <div class="dialog-backdrop" *ngIf="dialogVisible">
-  <div class="dialog-box" *ngIf="dialogData.type === 'medication-card'">
+  <div class="dialog-box" *ngIf="dialogData.type === 'medication-card'" [ngClass]="{'medication-dialog-box':dialogData.type === 'medication-card'}">
     <div class="sideEffects-links-container">
       <div class="container">
         <div class="sideEffects-title" *ngIf="dialogData.data.side_effects">
           <div class="header-container">
-            <h4>SideEffects</h4>
+            <div class="medicine-sideEffect-container">
+              <h4>{{dialogData.data.medicine_name}}</h4>
+              <h4>SideEffects</h4>
+            </div>
             <button
               (click)="showSideEffects($event)"
               class="sideEffects-button"
