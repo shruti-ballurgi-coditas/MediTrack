@@ -20,7 +20,7 @@
     border-radius: 0.25rem;
   }
   .sideEffects-container {
-    padding: 0 1rem 1rem;
+    padding: 1rem;
   }
 }
 
@@ -76,7 +76,7 @@
     .container {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      // gap: 0.5rem;
       .sideEffects-title {
         display: flex;
         gap: 1rem;
@@ -114,9 +114,9 @@
           column-gap: 4rem;
           flex-wrap: wrap;
           padding: 0 1rem;
-          li {
-            width: 12rem;
-          }
+          // li {
+          //   width: 12rem;
+          // }
         }
       }
 

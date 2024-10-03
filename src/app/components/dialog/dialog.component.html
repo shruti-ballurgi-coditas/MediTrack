@@ -6,7 +6,7 @@
           <div class="header-container">
             <div class="medicine-sideEffect-container">
               <h4>{{dialogData.data.medicine_name}}</h4>
-              <h4>SideEffects</h4>
+              <h4>Side Effects</h4>
             </div>
             <button
               (click)="showSideEffects($event)"
@@ -23,11 +23,12 @@
           class="sideEffects-container"
           *ngIf="isSideEffectsVisible === false"
         >
+        <div style="padding-bottom: 0.7rem;">
+          <p><strong>WARNING/CAUTION:</strong> Even though it may be rare, some people may have very bad and sometimes deadly side effects when taking a drug. Tell your doctor or get medical help right away if you have any of the following signs or symptoms that may be related to a very bad side effect:</p>
+        </div>
           <ul>
-            <ng-container
-              *ngFor="let sideEffect of dialogData.data.side_effects"
-            >
-              <li>{{ sideEffect | capitalise }}</li>
+            <ng-container *ngFor="let sideEffect of dialogData.data.side_effects">
+              <li>{{ sideEffect.side_effect_name | capitalise }}: {{ sideEffect.side_effect_description }}</li>
             </ng-container>
           </ul>
         </div>
@@ -60,7 +61,7 @@
               : '../../../assets/black_bacteria.png'
           "
         />
-        <h2>{{ dialogData.type === "warnings" ? "Warnings" : "Allergies" }}</h2>
+        <h2>{{ dialogData.type === "warnings" ? "Drug-Drug Interaction" : "Drug-Allergy Interaction" }}</h2>
       </div>
       <img src="../../../assets/close-window.png" (click)="closeDialog()" />
     </div>
