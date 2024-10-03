@@ -12,6 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { WarningsCardComponent } from './components/warnings-card/warnings-card.component';
 import { CapitalisePipe } from './pipes/capitalise.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CapitalisePipe } from './pipes/capitalise.pipe';
     FooterComponent,
     DialogComponent,
     WarningsCardComponent,
-    CapitalisePipe
+    CapitalisePipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

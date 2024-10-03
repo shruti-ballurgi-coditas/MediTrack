@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommonService {
-  private apiUrl = "http://127.0.0.1:8000";
+  private apiUrl = "http://192.168.101.190:8000";
 
   constructor(private http: HttpClient) {}
 
@@ -26,4 +26,27 @@ export class CommonService {
       { headers }
     );
   }
+
+  getSideEffects(data: any): Observable<any> {
+    console.log(data,"data");
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<any>(
+      `${this.apiUrl}/generator/side-effects/`,
+      { medications: data},
+      { headers }
+    );
+  }
+
+
+  sideEffectsData = new BehaviorSubject<any>({});
+
+  setSideEffectsData(data: any) {
+    this.sideEffectsData.next(data);
+  }
+
+  getSideEffectsData() {
+    return this.sideEffectsData.asObservable();
+  }
+
+
 }

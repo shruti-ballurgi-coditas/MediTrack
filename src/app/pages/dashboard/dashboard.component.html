@@ -30,7 +30,8 @@
     
     <div class="display-medication-container" [ngClass]="{'noCardData-container':!cardData}">
         <div *ngIf="!cardData;else other" class="noData-container">
-            <h3 [ngClass]="{'loading-animation':isUploadBtnClicked}">{{!isUploadBtnClicked ?'Upload prescription to see the Schedules': 'Loading...'}}</h3>
+            <h3 *ngIf="!isUploadBtnClicked">Load prescription to see the Schedules</h3>
+            <app-loader *ngIf="isUploadBtnClicked"></app-loader>
         </div>
         <ng-template #other>
             <div class="header">
