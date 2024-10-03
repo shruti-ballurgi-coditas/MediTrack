@@ -5,9 +5,7 @@
 
   .file-upload-container {
     display: flex;
-    // align-items: center;
     justify-content: space-around;
-    // height: 40%;
     margin: 5rem 12rem 2rem 12rem;
     gap: 6rem;
 
@@ -34,7 +32,6 @@
           text-align: center;
         }
       }
-      // z-index: -200;
 
       .custom-file-input {
         display: inline-block;
@@ -102,7 +99,7 @@
     padding: 0.75rem !important;
   }
   .display-medication-container {
-    padding: 2rem 0 0 6rem;
+    padding: 2rem 6rem 0 6rem;
     height: 60%;
     background-color: #f0f1ff;
 
@@ -116,7 +113,6 @@
 
     .header {
       display: flex;
-      // justify-content: space-between;
       gap: 1.5rem;
 
       .button-container {

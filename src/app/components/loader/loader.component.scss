@@ -1,0 +1,48 @@
+.loader {
+    border: 9px solid #f3f3f3; /* Light grey */
+    border-top: 9px solid #5664f5; /* Blue */
+    border-right: 9px solid #5664f5; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+// .hourglass-loader {
+//     width: 0;
+//     height: 0;
+//     border-left: 25px solid transparent;
+//     border-right: 25px solid transparent;
+//     border-bottom: 40px solid #5664f5; /* Color of the "sand" */
+//     position: relative;
+//     animation: hourglass 1.5s infinite ease-in-out;
+//   }
+  
+//   .hourglass-loader:after {
+//     content: "";
+//     position: absolute;
+//     top: 100%;
+//     left: -25px;
+//     width: 0;
+//     height: 0;
+//     border-left: 25px solid transparent;
+//     border-right: 25px solid transparent;
+//     border-top: 40px solid #5664f5; /* Color of the "sand" */
+//   }
+  
+//   @keyframes hourglass {
+//     0% {
+//       transform: rotate(0);
+//     }
+//     50% {
+//       transform: rotate(180deg);
+//     }
+//     100% {
+//       transform: rotate(360deg);
+//     }
+//   }

@@ -2,10 +2,10 @@
   <div class="dialog-box" *ngIf="dialogData.type === 'medication-card'" [ngClass]="{'medication-dialog-box':dialogData.type === 'medication-card'}">
     <div class="sideEffects-links-container">
       <div class="container">
-        <div class="sideEffects-title" *ngIf="dialogData.data.side_effects">
+        <div class="sideEffects-title" *ngIf="dialogData.data[0].side_effects">
           <div class="header-container">
             <div class="medicine-sideEffect-container">
-              <h4>{{dialogData.data.medicine_name}}</h4>
+              <h4>{{dialogData.data[0].medicine_name}}</h4>
               <h4>SideEffects</h4>
             </div>
             <button
@@ -25,9 +25,9 @@
         >
           <ul>
             <ng-container
-              *ngFor="let sideEffect of dialogData.data.side_effects"
+              *ngFor="let sideEffect of dialogData.data[0].side_effects"
             >
-              <li>{{ sideEffect | capitalise }}</li>
+              <li>{{ sideEffect.side_effect_name | capitalise }}</li>
             </ng-container>
           </ul>
         </div>

@@ -223,6 +223,7 @@ export class DashboardComponent {
   //     ]};
   warningsData :any;
   allergiesData :any;
+  sideEffectsData : any;
   selectedImg!: File;
   isUploadBtnClicked: boolean = false;
   fileUploadForm = new FormGroup({
@@ -250,6 +251,12 @@ export class DashboardComponent {
         this.cardData = response;
         this.isUploadBtnClicked = false;
         if(this.cardData) {
+          this.commonService.getSideEffects(this.cardData).subscribe({
+            next: (response: any) => {
+              this.sideEffectsData = response;
+              this.commonService.setSideEffectsData(this.sideEffectsData);
+            }
+          })
           this.commonService.getWarningsAndAllergies(this.cardData).subscribe({
             next: (response: any) => {
               const data = response;
@@ -271,19 +278,15 @@ export class DashboardComponent {
   }
 
   openWarningsDialog() {
-    // this.dialogService.dialogData = this.cardData.warnings;
     this.dialogService.openDialog({
       type: 'warnings',
-      // warningData: this.warningsData,
       warningData: this.warningsData
     });
   }
 
   openAllergiesDialog() {
-    // this.dialogService.dialogData = this.cardData.warnings;
     this.dialogService.openDialog({
       type: 'allergies',
-      // warningData: this.allergiesData,
       warningData: this.allergiesData
     });
   }
