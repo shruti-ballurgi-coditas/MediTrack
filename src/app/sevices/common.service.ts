@@ -16,6 +16,12 @@ export class CommonService {
       formData
     );
   }
+  getPatientInfo(data: any) {
+    return this.http.post(
+      `${this.apiUrl}/generator/patient-information/`,
+      data
+    );
+  }
 
   getWarningsAndAllergies(data: any): Observable<any> {
     console.log(data,"data");

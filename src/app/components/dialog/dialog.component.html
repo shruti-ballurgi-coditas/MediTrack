@@ -1,5 +1,5 @@
 <div class="dialog-backdrop" *ngIf="dialogVisible">
-  <div class="dialog-box" *ngIf="dialogData.type === 'medication-card'" [ngClass]="{'medication-dialog-box':dialogData.type === 'medication-card'}">
+  <div class="dialog-box" *ngIf="dialogData.type === 'medication-card' && dialogData.data[0]" [ngClass]="{'medication-dialog-box':dialogData.type === 'medication-card'}">
     <div class="sideEffects-links-container">
       <div class="container">
         <div class="sideEffects-title" *ngIf="dialogData.data[0].side_effects">
@@ -23,12 +23,21 @@
           class="sideEffects-container"
           *ngIf="isSideEffectsVisible === false"
         >
-        <div style="padding-bottom: 0.7rem;">
-          <p><strong>WARNING/CAUTION:</strong> Even though it may be rare, some people may have very bad and sometimes deadly side effects when taking a drug. Tell your doctor or get medical help right away if you have any of the following signs or symptoms that may be related to a very bad side effect:</p>
-        </div>
+          <div style="padding-bottom: 0.7rem;">
+            <p><strong>WARNING/CAUTION:</strong> Even though it may be rare, some people may have very bad and sometimes deadly side effects when taking a drug. Tell your doctor or get medical help right away if you have any of the following signs or symptoms that may be related to a very bad side effect:</p>
+          </div>
           <ul>
-            <ng-container *ngFor="let sideEffect of dialogData.data.side_effects">
+            <ng-container *ngFor="let sideEffect of dialogData.data[0].side_effects">
               <li>{{ sideEffect.side_effect_name | capitalise }}: {{ sideEffect.side_effect_description }}</li>
+            </ng-container>
+          </ul>
+
+          <div style="padding-bottom: 0.7rem;">
+            <p><strong>References:</strong></p>
+          </div>
+          <ul style="display: block;">
+            <ng-container *ngFor="let reference of dialogData.data[0].references">
+              <li><a [href]="reference" target="_blank">{{ reference | slice:8:(reference.indexOf('/', 8) > -1 ? reference.indexOf('/', 8) : reference.length) }}</a></li>
             </ng-container>
           </ul>
         </div>

@@ -2,24 +2,24 @@
   <div class="warning-container">
     <div class="title-container">
       <div class="drugs-container">
-        <div class="drugs" *ngIf="data.drug_names">
+        <div class="drugs" *ngIf="data.medicine_names">
 
-            <h4>{{ data.drug_names[0] }}</h4>
+            <h4>{{ data.medicine_names[0] }}</h4>
             <img
               [src]=" '../../../assets/interaction.svg'"
               class="interaction-img"
-              *ngIf="data.drug_names.length === 2"
+              *ngIf="data.medicine_names.length === 2"
             />
-            <h4 *ngIf="data.drug_names[1]">{{ data.drug_names[1] }}</h4>
+            <h4 *ngIf="data.medicine_names[1]">{{ data.medicine_names[1] }}</h4>
         </div>
-        <div class="drugs" *ngIf="data.drug_name">
+        <div class="drugs" *ngIf="data.medicine_name">
 
             <h4>{{ data.patient_allergy_name }}</h4>
             <img
               [src]=" '../../../assets/interaction.svg'"
               class="interaction-img"
             />
-            <h4>{{ data.drug_name[0] }}</h4>
+            <h4>{{ data.medicine_name[0] }}</h4>
         </div>
       </div>
 

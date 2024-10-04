@@ -1,14 +1,14 @@
 <div class="medication-card">
   <div class="medication-details">
     <div class="medication-name">
-      <h4>Medicine: <h4>{{ data.medicine_name }}</h4></h4>
+      <h4>Medicine: <h4 [ngClass]="{'handwritten': data.is_handwritten}">{{ data.medicine_name }}</h4></h4>
       <div (click)="openDialog(data)" class="i-button">
         <span>i</span>
       </div>
     </div>
     <span *ngIf="data.start_date">Start Date: {{ data.start_date }}</span>
-    <span *ngIf="data.frequency">Frequency: {{ data.frequency }}</span>
-    <span *ngIf="data.dosage">Dosage: {{ data.dosage }}</span>
+    <span *ngIf="data.frequency">Frequency: {{ data.frequency }} per day</span>
+    <span *ngIf="data.dosage" [ngClass]="{'unsure-dosage': data.is_unsure_about_dosage}">Dosage: {{ data.dosage }}</span>
   </div>
   <div class="time-container" *ngIf="data.schedule.length >0">
     <ng-container
@@ -17,11 +17,11 @@
       <span>{{
         schedule.day_time === "Morning"
           ? "Morn."
-          : schedule.day_time === "Afternoon"
-          ? "After."
+          : schedule.day_time === "Noon" || schedule.day_time === "Afternoon"
+          ? "Noon."
           : schedule.day_time === "Evening"
           ? "Eve."
-          : schedule.day_time === "Night"?"Night":''
+          : schedule.day_time === "Bedtime" || schedule.day_time === "Night" ? "Night" : ''
       }}</span>
       <!-- Only show '|' if it's not the last item -->
       <span *ngIf="!isLast"> | </span>

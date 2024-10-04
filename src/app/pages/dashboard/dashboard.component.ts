@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DialogService } from 'src/app/sevices/dialog.service';
@@ -157,13 +157,14 @@ import { CommonService } from 'src/app/sevices/common.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
   constructor(
     public dialogService: DialogService,
     private commonService: CommonService
   ) {}
+ 
   cardData: any;
-  // cardData:any={
+  
   //   "medication_schedules": [
   //       {
   //           "start_date": "2023-08-30",
@@ -231,6 +232,19 @@ export class DashboardComponent {
   });
 
   fileName: string = '';
+  patientInfo : any;
+
+
+  ngOnInit(): void {
+    this.commonService.getPatientInfo("patientInfo").subscribe({
+      next: (response: any) => {
+        this.patientInfo = response;
+      }
+    })
+
+  }
+
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
